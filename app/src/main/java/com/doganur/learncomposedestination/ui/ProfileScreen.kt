@@ -1,16 +1,34 @@
 package com.doganur.learncomposedestination.ui
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import com.ramcosta.composedestinations.annotation.Destination
 
-@Destination()
+@Destination
 @Composable
 fun ProfileScreen(
     id: Int,
     name: String? = null,
 ) {
-    Text(
-        text = "Profile Screen $id $name"
-    )
+    Column(
+        modifier = Modifier
+            .fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Text(
+            text = "Profile Screen"
+        )
+
+        Text(
+            text = "UserId: $id"
+        )
+
+        Text(
+            text = "Username : $name"
+        )
+    }
 }
