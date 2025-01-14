@@ -19,16 +19,33 @@ import androidx.compose.ui.unit.dp
 import com.doganur.learncomposedestination.screens.destinations.ProfileScreenDestination
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import com.ramcosta.composedestinations.result.NavResult
+import com.ramcosta.composedestinations.result.ResultRecipient
 
 
 @Destination(start = true)
 @Composable
 fun HomeScreen(
-    destinationsNavigator: DestinationsNavigator
+    destinationsNavigator: DestinationsNavigator,
+    resultRecipient: ResultRecipient<ProfileScreenDestination, Int>
 ) {
+
     var name by remember { mutableStateOf("") }
     var surname by remember { mutableStateOf("") }
     var showError by remember { mutableStateOf(false) }
+    var age by remember { mutableStateOf("0") }
+
+    resultRecipient.onNavResult { result ->
+        when (result) {
+            is NavResult.Canceled -> {
+                println("Navigation to ProfileScreen was canceled.")
+            }
+
+            is NavResult.Value -> {
+                age = result.value.toString() // Geri dönen yaşı al ve ekrana yansıt
+            }
+        }
+    }
 
     Column(
         modifier = Modifier
@@ -55,6 +72,14 @@ fun HomeScreen(
             },
             label = { Text("Enter your surname") }
         )
+
+        if (age.isNotBlank()) {
+            Text(
+                text = "Returned Age: $age",
+                modifier = Modifier.padding(8.dp),
+                color = Color.Green
+            )
+        }
 
         if (showError) {
             Text(
