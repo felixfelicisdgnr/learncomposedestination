@@ -11,7 +11,6 @@ import com.ramcosta.composedestinations.annotation.Destination
 @Destination
 @Composable
 fun ProfileScreen(
-    id: Int,
     name: String? = null,
 ) {
     Column(
@@ -21,10 +20,6 @@ fun ProfileScreen(
     ) {
         Text(
             text = "Profile Screen"
-        )
-
-        Text(
-            text = "UserId: $id"
         )
 
         Text(
