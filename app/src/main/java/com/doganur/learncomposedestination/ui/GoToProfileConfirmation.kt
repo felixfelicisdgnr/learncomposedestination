@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.result.ResultBackNavigator
 
-@Destination()
+@Destination(style = MyDialogStyle::class)
 @Composable
 fun GoToProfileConfirmation(
     resultNavigator: ResultBackNavigator<Boolean> //Dialogdan geri veri döndürmek için kullanılıyor
@@ -42,3 +42,25 @@ fun GoToProfileConfirmation(
         }
     )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
